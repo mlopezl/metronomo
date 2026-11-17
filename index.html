@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d10" />
+    <meta name="description" content="A digital metronome for precise practice." />
+    <title>Metronome — Keep the beat</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <div class="topline" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <header class="header">
+        <h1>Metronome</h1>
+      </header>
+
+      <section class="metronome" aria-label="Metronome controls">
+        <div class="tempo-panel">
+          <div class="section-label">Tempo</div>
+          <div class="tempo-readout">
+            <label class="sr-only" for="tempo">Tempo in beats per minute</label>
+            <input id="tempo" class="tempo-value" type="number" min="30" max="300" step="1" inputmode="numeric" value="120" />
+            <span class="tempo-unit">BPM</span>
+          </div>
+          <div class="tempo-adjust" aria-label="Adjust tempo">
+            <button id="decrease" class="adjust-button" type="button" aria-label="Decrease tempo by one beat per minute">−</button>
+            <div class="adjust-track" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <button id="increase" class="adjust-button" type="button" aria-label="Increase tempo by one beat per minute">+</button>
+          </div>
+          <div class="tempo-range"><span>Slow</span><span>Fast</span></div>
+        </div>
+
+        <div class="beat-panel">
+          <div class="panel-heading">
+            <div class="section-label">Beat</div>
+          </div>
+          <div id="beats" class="beats" aria-label="Four beats in the measure"></div>
+          <div class="meter-row">
+            <label for="meter">Meter</label>
+            <div class="select-wrap">
+              <select id="meter" aria-label="Time signature">
+                <option value="2/4">2/4</option>
+                <option value="3/4">3/4</option>
+                <option value="4/4" selected>4/4</option>
+                <option value="6/8">6/8</option>
+              </select>
+              <svg class="meter-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+                <path d="M3 6h14l-7 9z" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="play" class="play-button" type="button" aria-label="Start metronome">
+            <span id="play-icon" class="play-icon" aria-hidden="true"></span>
+            <span id="play-text">Start</span>
+          </button>
+          <div class="secondary-controls">
+            <button id="stop" class="secondary-button" type="button"><span class="stop-icon" aria-hidden="true"></span> Stop</button>
+            <button id="tap" class="secondary-button tap-button" type="button">TAP <span class="tap-mark" aria-hidden="true">↗</span></button>
+          </div>
+          <p class="hint">Press <kbd>TAP</kbd> several times to set the tempo.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
